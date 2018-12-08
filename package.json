@@ -1,0 +1,21 @@
+{
+  "name": "DiscordSourceBot",
+  "version": "1.0.0",
+  "description": "Anime sourcing discord bot",
+  "main": "index.js",
+  "author": "Sam Uribe",
+  "license": "MIT",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "btoa": "^1.2.1",
+    "color-convert": "^1.9.3",
+    "discord.js": "^11.4.2",
+    "dotenv": "^6.2.0",
+    "mime": "^2.4.0",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.2",
+    "sharp": "^0.21.1"
+  }
+}
