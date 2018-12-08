@@ -1,8 +1,9 @@
 const { handleImageLinkSourcing } = require('./sourcers/tracemoe');
+require('dotenv').config();
 
 const Discord = require('discord.js');
 const client = new Discord.Client();
-
+const discordToken = process.env.DISCORD_TOKEN;
 const sourcerOptions = {
     minSimilarity: 0.91,       // Minimum similarity between sourced image and source image
     maxAspectRatioError: 0.15, // Maximum error% between multiples of ideal (16:9 or 4:3) and true aspect ratio
@@ -65,4 +66,4 @@ client.on('message', async message => {
     }
 });
 
-client.login('MjA4MDEwODk1NDkyNjQ0ODY1.DuzDWw.cDUbakRyehbLKwFriEqQhOGZa1Q');
+client.login(discordToken);
