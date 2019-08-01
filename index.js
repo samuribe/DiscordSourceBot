@@ -61,16 +61,11 @@ client.on('message', async message => {
             case '$drink':
                 let drink = await getRandDrink();
                 drink = drink.drinks[0];
-                //console.log(drink);
-                let output = drink.strDrinkThumb + '\nName: ' + drink.strDrink + '\nIng 1: ' + drink.strIngredient1 + '\nIng 2: ' + drink.strIngredient2;
-                if(drink.strIngredient3 != ''){
-                    output = output + '\nIng 3: ' + drink.strIngredient3;
-                }
-                if(drink.strIngredient4 != ''){
-                    output = output + '\nIng 4: ' + drink.strIngredient4;
-                }
-                if(drink.strIngredient5 != ''){
-                    output = output + '\nIng 5: ' + drink.strIngredient5;
+                let output = drink.strDrinkThumb + '\nName: ' + drink.strDrink;
+                for(let i = 1;i<=15;i++){
+                    if(drink['strIngredient' + i] != '' && drink['strIngredient' + i] != null ){
+                        output = output + '\nIng' + i + ': ' + drink['strIngredient' + i] + ' ' + drink['strMeasure' + i];
+                    }
                 }
                 message.channel.send(output);
                 break;
