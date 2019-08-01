@@ -1,4 +1,5 @@
 const { handleImageLinkSourcing } = require('./sourcers/tracemoe');
+const { getRandDrink } = require('./sourcers/cocktail-api');
 require('dotenv').config();
 
 const Discord = require('discord.js');
@@ -56,6 +57,22 @@ client.on('message', async message => {
                 else {
                     message.channel.send('Invalid Command\nFor sourcing, use the format $source {image URL} OR $source with attached image file');
                 }
+                break;
+            case '$drink':
+                let drink = await getRandDrink();
+                drink = drink.drinks[0];
+                //console.log(drink);
+                let output = drink.strDrinkThumb + '\nName: ' + drink.strDrink + '\nIng 1: ' + drink.strIngredient1 + '\nIng 2: ' + drink.strIngredient2;
+                if(drink.strIngredient3 != ''){
+                    output = output + '\nIng 3: ' + drink.strIngredient3;
+                }
+                if(drink.strIngredient4 != ''){
+                    output = output + '\nIng 4: ' + drink.strIngredient4;
+                }
+                if(drink.strIngredient5 != ''){
+                    output = output + '\nIng 5: ' + drink.strIngredient5;
+                }
+                message.channel.send(output);
                 break;
             case '$help':
                 message.channel.send('Use the $source command to source an anime screencap!\n$source {image URL} or just $source with an attached image file');
